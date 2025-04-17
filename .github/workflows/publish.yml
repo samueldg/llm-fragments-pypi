@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        run: uv build
+
+      - name: Publish
+        run: uv publish
