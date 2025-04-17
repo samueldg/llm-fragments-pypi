@@ -29,7 +29,8 @@ llm -f pypi:pydantic@1.6  "What are the Python versions supported by pydantic?"
 You can combine multiple fragments:
 
 ```sh
-llm -f pypi:litestar -f pypi:fastapi "What are some similarities and differences between litestar and fastapi?"
+llm -f pypi:litestar -f pypi:fastapi \
+  "What are some similarities and differences between litestar and fastapi?"
 ```
 
 ## Development
@@ -42,7 +43,8 @@ To set up this plugin locally, use `uv`:
 uv run llm install -e .
 ```
 
-It'll take care of creating a virtual environment, installing the dependencies, and you can run a `uv run llm` instance that will use the local version of the plugin.
+It'll take care of creating a virtual environment, installing the dependencies,
+and you can run a `uv run llm` instance that will use the local version of the plugin.
 
 ### Dev dependencies
 
