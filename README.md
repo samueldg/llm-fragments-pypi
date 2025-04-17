@@ -23,7 +23,7 @@ You can optionally specify a version with the `@version` suffix:
 
 ```sh
 # Retrieve a specific version
-llm -f pypi:pydantic@1.6  "What are the Python versions supported by pydantic?"
+llm -f pypi:pydantic@1.6 "What are the Python versions supported by pydantic?"
 ```
 
 You can combine multiple fragments:
