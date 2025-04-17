@@ -1,6 +1,14 @@
 import json
 
+import llm
+
 import llm_fragments_pypi
+
+PREFIX = "pypi"
+
+
+def _get_fragment_by_source(fragments: list[llm.Fragment], source: str) -> llm.Fragment:
+    return next(f for f in fragments if f.source == f"{PREFIX}:{source}")
 
 
 def test_pypi_package_metadata_loader_no_version():
@@ -8,7 +16,7 @@ def test_pypi_package_metadata_loader_no_version():
     assert len(fragments) == 3
 
     # Check info fragment
-    info_fragment = next(f for f in fragments if f.source == "pypi:llm/info")
+    info_fragment = _get_fragment_by_source(fragments, "llm/info")
     info_data = json.loads(str(info_fragment))
     assert info_data["name"] == "llm"
     assert isinstance(info_data["version"], str)  # Version might change over time
@@ -20,12 +28,12 @@ def test_pypi_package_metadata_loader_no_version():
     assert "home_page" in info_data
 
     # Check description fragment
-    desc_fragment = next(f for f in fragments if f.source == "pypi:llm/description")
+    desc_fragment = _get_fragment_by_source(fragments, "llm/description")
     assert str(desc_fragment)  # Should have some content
     assert len(str(desc_fragment)) > 0
 
     # Check license fragment
-    license_fragment = next(f for f in fragments if f.source == "pypi:llm/license")
+    license_fragment = _get_fragment_by_source(fragments, "llm/license")
     assert str(license_fragment)  # Should have some content
     assert len(str(license_fragment)) > 0
 
@@ -35,7 +43,7 @@ def test_pypi_package_metadata_loader_with_version():
     assert len(fragments) == 3
 
     # Check info fragment
-    info_fragment = next(f for f in fragments if f.source == "pypi:llm@0.24/info")
+    info_fragment = _get_fragment_by_source(fragments, "llm@0.24/info")
     info_data = json.loads(str(info_fragment))
     assert info_data["name"] == "llm"
     assert info_data["version"] == "0.24"
@@ -47,11 +55,11 @@ def test_pypi_package_metadata_loader_with_version():
     assert "home_page" in info_data
 
     # Check description fragment
-    desc_fragment = next(f for f in fragments if f.source == "pypi:llm@0.24/description")
+    desc_fragment = _get_fragment_by_source(fragments, "llm@0.24/description")
     assert str(desc_fragment)  # Should have some content
     assert len(str(desc_fragment)) > 0
 
     # Check license fragment
-    license_fragment = next(f for f in fragments if f.source == "pypi:llm@0.24/license")
+    license_fragment = _get_fragment_by_source(fragments, "llm@0.24/license")
     assert str(license_fragment)  # Should have some content
     assert len(str(license_fragment)) > 0
