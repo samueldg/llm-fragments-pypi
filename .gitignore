@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build files
+build/
+dist/
+wheels/
+*.egg-info
+
+# Linter cache
+.ruff_cache
+
+# Virtual environments
+.venv
