@@ -33,6 +33,27 @@ llm -f pypi:litestar -f pypi:fastapi \
   "What are some similarities and differences between litestar and fastapi?"
 ```
 
+And combine with other `llm` features:
+
+```sh
+$ llm --schema-multi "package,version" \
+  -f pypi:polars \
+  -f pypi:pandas \
+  "What's the latest version of each package?" \
+| jq .items
+
+[
+  {
+    "package": "polars",
+    "version": "1.27.1"
+  },
+  {
+    "package": "pandas",
+    "version": "2.2.3"
+  }
+]
+```
+
 ## Development
 
 ### Local Setup
