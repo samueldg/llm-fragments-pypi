@@ -9,6 +9,7 @@ dependencies = [
     "httpx>=0.28.1",
     "llm>=0.24",
 ]
+keywords = ["llm", "llm-fragments", "pypi"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
