@@ -44,9 +44,9 @@ fragments_pypi = "llm_fragments_pypi"
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.2.0,<5",
-    "pytest>=8.3.5,<9",
-    "ruff>=0.11.5,<0.12",
+    "prek>=0.2.12,<0.3",
+    "pytest>=8.4.2,<9",
+    "ruff>=0.14.2,<0.15",
 ]
 
 [build-system]

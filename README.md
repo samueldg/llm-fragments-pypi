@@ -87,7 +87,7 @@ uv run ruff check .
 And run the pre-commit hooks:
 
 ```sh
-uv run pre-commit install
+uv run prek install
 ```
 
 ### Tests
